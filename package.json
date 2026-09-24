@@ -2,10 +2,10 @@
   "name": "taski",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "vitest",
-    "contract:emit": "prisma contract emit"
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
