@@ -1,0 +1,42 @@
+model User {
+  id Int @id @default(autoincrement())
+  name String
+  email String @unique
+  passwordHash String
+  createdAt DateTime @default(now())
+  verified Boolean @default(false)
+  codes Code[]
+  refreshToken RefreshToken[]
+  tasks Task[]
+}
+
+model Code {
+  id Int @id @default(autoincrement())
+  codeHash String
+  userEmail String
+  user User @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model RefreshToken {
+  id Int @id @default(autoincrement())
+  tokenHash String
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  revoked Boolean @default(false)
+}
+
+model Task {
+  id Int @id @default(autoincrement())
+  title String
+  description String?
+  createdAt DateTime @default(now())
+  highPriority Boolean @default(false)
+  deleted Boolean @default(false)
+  done Boolean @default(false)
+  userId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
