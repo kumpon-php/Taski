@@ -27,7 +27,8 @@ export const sendCode = async (toEmail: Email, code: Code) => {
 
     try {
         await transporter.verify();
-        await transporter.sendMail(mailOptions);
+        const info = await transporter.sendMail(mailOptions);
+        console.log(info.messageId, info.response);
     } catch (err) {
         throw err;
     }
