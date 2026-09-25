@@ -15,10 +15,12 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 const app = express();
+app.set('trust proxy', 1);
+
 app.use(helmet());
 app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true,
+    origin: '*',
+    // credentials: true,
 }));
 
 // ROUTES
