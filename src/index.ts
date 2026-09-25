@@ -17,8 +17,8 @@ import cors from 'cors';
 const app = express();
 app.use(helmet());
 app.use(cors({
-    origin: '*',
-    //credentials: true, UNCOMMENT IF FRONTEND EXISTS
+    origin: 'http://localhost:5173',
+    credentials: true,
 }));
 
 // ROUTES
