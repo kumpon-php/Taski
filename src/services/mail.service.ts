@@ -18,7 +18,7 @@ const transporter = nodemailer.createTransport({
 
 export const sendCode = async (toEmail: Email, code: Code) => {
     const mailOptions = {
-        from: '"SellBySell" <contact@sellbysell.ru>',
+        from: '"SellBySell" <no-reply@sellbysell.ru>',
         to: toEmail,
         subject: 'SellBySell | Код подтверждения',
         html: `<p>Ваш код: <b>${code}</b></p>
