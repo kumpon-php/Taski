@@ -1,13 +1,13 @@
-import { db } from '../db';
+import { db } from '../db.js';
 
 import jwt from 'jsonwebtoken';
-import { SECRET } from '../schemas/env.schema';
+import { SECRET } from '../schemas/env.schema.js';
 
 // ERRORS
-import { InvalidTokenError } from '../errors/app.errors';
+import { InvalidTokenError } from '../errors/app.errors.js';
 
 // TYPES
-import type { Token } from '../schemas/token.schema';
+import type { Token } from '../schemas/token.schema.js';
 
 // ADDITIONAL
 import bcrypt from 'bcrypt';

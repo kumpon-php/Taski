@@ -6,8 +6,7 @@
   "scripts": {
     "test": "vitest",
     "build": "tsc",
-    "start": "node dist/src/index.js",
-    "main": "dist/src/index.js",
+    "start": "node dist/index.js",
     "dev": "tsx src/index.ts",
     "contract:emit": "prisma contract emit"
   },

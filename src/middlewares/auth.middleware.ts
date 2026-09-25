@@ -1,10 +1,10 @@
 import type { Request, Response, NextFunction } from 'express';
 
 // ERRORS
-import { UnauthorizedError } from '../errors/app.errors';
+import { UnauthorizedError } from '../errors/app.errors.js';
 
 // SERVICES
-import { verifyJWT } from '../services/token.service';
+import { verifyJWT } from '../services/token.service.js';
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     try {

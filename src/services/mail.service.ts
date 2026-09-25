@@ -1,8 +1,8 @@
 import nodemailer from 'nodemailer';
 
 // SCHEMAS
-import { MAIL_HOST, MAIL_PORT, MAIL_SECURE, MAIL_PASS, MAIL_USER } from "../schemas/env.schema";
-import type { Email, Code } from '../schemas/user.schema';
+import { MAIL_HOST, MAIL_PORT, MAIL_SECURE, MAIL_PASS, MAIL_USER } from "../schemas/env.schema.js";
+import type { Email, Code } from '../schemas/user.schema.js';
 
 const transporter = nodemailer.createTransport({
     host: MAIL_HOST,

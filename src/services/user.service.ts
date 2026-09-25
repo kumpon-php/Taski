@@ -1,4 +1,4 @@
-import { db } from '../db';
+import { db } from '../db.js';
 
 // TYPES
 import type {
@@ -9,7 +9,7 @@ import type {
     ChangePassword,
     ChangeName,
     VerificationData
-    } from '../schemas/user.schema';
+    } from '../schemas/user.schema.js';
 
 // ERRORS
 import {
@@ -24,12 +24,12 @@ import {
     WrongOldPasswordError,
     BadPasswordError,
     BadNameError
-    } from '../errors/app.errors';
+    } from '../errors/app.errors.js';
 
 // ADDITIONAL
 import bcrypt from 'bcrypt';
-import { enqueueCode } from '../mail.queue';
-import { signJWT, generateRefreshToken, createTokenHash, saveToken, refresh } from './token.service';
+import { enqueueCode } from '../mail.queue.js';
+import { signJWT, generateRefreshToken, createTokenHash, saveToken, refresh } from './token.service.js';
 import { Temporal } from 'temporal-polyfill';
 
 export const create = async (code: Code, data: UserDto) => {

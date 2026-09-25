@@ -10,12 +10,12 @@ import {
     changeName,
     logout,
     newCode
-    } from '../services/user.service';
+    } from '../services/user.service.js';
 
 // ADDITIONAL
-import { generateCode } from '../services/code.service';
-import { refresh, REFRESH_COOKIE } from '../services/token.service';
-import { setRefreshCookie, clearRefreshCookie } from '../services/token.service';
+import { generateCode } from '../services/code.service.js';
+import { refresh, REFRESH_COOKIE } from '../services/token.service.js';
+import { setRefreshCookie, clearRefreshCookie } from '../services/token.service.js';
 
 // SCHEMAS
 import {
@@ -25,7 +25,7 @@ import {
     changePasswordSchema,
     changeNameSchema,
     emailSchema
-    } from '../schemas/user.schema';
+    } from '../schemas/user.schema.js';
 
 export const createUser = async (req: Request, res: Response, next: NextFunction) => {
     try {

@@ -1,15 +1,15 @@
 import 'temporal-polyfill/global'; // FOR DATETIME PRISMA
-import { db, runtime } from './db';
-import { PORT } from './schemas/env.schema';
+import { db, runtime } from './db.js';
+import { PORT } from './schemas/env.schema.js';
 
 import express from 'express';
 import type { Request, Response } from 'express';
 
 // MIDDLEWARE
-import { errorHandler } from './middlewares/errors.middleware';
+import { errorHandler } from './middlewares/errors.middleware.js';
 
 // ADDITIONAL
-import { startMailWorker } from './mail.queue';
+import { startMailWorker } from './mail.queue.js';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import cors from 'cors';
@@ -22,8 +22,8 @@ app.use(cors({
 }));
 
 // ROUTES
-import userRouter from './routes/user.routes';
-import taskRouter from './routes/task.routes';
+import userRouter from './routes/user.routes.js';
+import taskRouter from './routes/task.routes.js';
 
 app.use(express.json());
 app.use(cookieParser());

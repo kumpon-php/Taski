@@ -1,4 +1,4 @@
-import { sendCode } from "./services/mail.service";
+import { sendCode } from "./services/mail.service.js";
 
 type Job = {
     email: string,

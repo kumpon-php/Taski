@@ -1,8 +1,8 @@
 import { Router } from 'express';
 
 // MIDDLEWARE
-import { authMiddleware } from '../middlewares/auth.middleware';
-import { limiter } from '../middlewares/limiter.middleware';
+import { authMiddleware } from '../middlewares/auth.middleware.js';
+import { limiter } from '../middlewares/limiter.middleware.js';
 
 // CONTROLLERS
 import {
@@ -11,7 +11,7 @@ import {
     getTaskById,
     updateTask,
     removeTask
-    } from '../controllers/task.controller';
+    } from '../controllers/task.controller.js';
 
 const taskRouter = Router();
 

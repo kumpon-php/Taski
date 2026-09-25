@@ -1,10 +1,10 @@
-import { db } from '../db';
+import { db } from '../db.js';
 
 // TYPES
-import type { TaskDto, TaskUpdate, TaskSearchOptions } from '../schemas/task.schema';
+import type { TaskDto, TaskUpdate, TaskSearchOptions } from '../schemas/task.schema.js';
 
 // ERRORS
-import { TaskNotFoundError } from '../errors/app.errors';
+import { TaskNotFoundError } from '../errors/app.errors.js';
 
 export const create = async (userId: number, data: TaskDto) => {
 

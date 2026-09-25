@@ -5,7 +5,7 @@ import {
     taskSchema,
     taskUpdateSchema,
     searchOptions
-    } from '../schemas/task.schema';
+    } from '../schemas/task.schema.js';
 
 // SERVICES
 import {
@@ -14,7 +14,7 @@ import {
     getTask,
     update,
     remove
-    } from '../services/task.service';
+    } from '../services/task.service.js';
 
 export const createTask = async (req: Request, res: Response, next: NextFunction) => {
     try {
