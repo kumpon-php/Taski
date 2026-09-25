@@ -2,7 +2,7 @@ import rateLimit from 'express-rate-limit';
 import type { Request, Response } from 'express';
 
 export const limiter = rateLimit({
-    windowMs: 30 * 60 * 1000,
+    windowMs: 60 * 1000,
     limit: 5,
     standardHeaders: true,
     handler: (req: Request, res: Response) => {
