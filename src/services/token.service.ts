@@ -23,7 +23,7 @@ export const setRefreshCookie = (res: Response, token: string) => {
     res.cookie(REFRESH_COOKIE, token, {
         httpOnly: true,
         sameSite: 'lax',
-        secure: false,
+        secure: true,
         path: '/user',
         maxAge: 7 * 24 * 60 * 60 * 1000,
     });
