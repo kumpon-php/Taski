@@ -17,4 +17,13 @@ export const authLimiter = rateLimit({
     handler: (req: Request, res: Response) => {
         return res.status(429).json({ code: 429, error: 'Слишком много попыток. Попробуйте позже.' })
     }
-})
+});
+
+export const taskLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 15,
+    standardHeaders: true,
+    handler: (req: Request, res: Response) => {
+        return res.status(429).json({ code: 429, error: 'Слишком много попыток. Попробуйте позже.' })
+    }
+});

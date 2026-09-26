@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 // MIDDLEWARE
 import { authMiddleware } from '../middlewares/auth.middleware.js';
-import { limiter } from '../middlewares/limiter.middleware.js';
+import { taskLimiter } from '../middlewares/limiter.middleware.js';
 
 // CONTROLLERS
 import {
@@ -19,7 +19,7 @@ taskRouter.use(authMiddleware);
 
 taskRouter.get('/', getAllTasks);
 taskRouter.get('/:id', getTaskById);
-taskRouter.post('/', limiter, createTask);
+taskRouter.post('/', taskLimiter, createTask);
 taskRouter.patch('/:id', updateTask);
 taskRouter.delete('/:id', removeTask);
 
