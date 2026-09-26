@@ -15,15 +15,15 @@ import {
 
 // MIDDLEWARE
 import { authMiddleware } from '../middlewares/auth.middleware.js';
-import { limiter } from '../middlewares/limiter.middleware.js';
+import { limiter, authLimiter } from '../middlewares/limiter.middleware.js';
 
 const userRouter = Router();
 
 userRouter.post('/', limiter, createUser);
-userRouter.post('/verify', limiter, verifyUser);
-userRouter.post('/login', limiter, loginUser);
-userRouter.post('/refresh', limiter, refreshUserToken);
-userRouter.post('/code', limiter, newCodeRequest);
+userRouter.post('/verify', authLimiter, verifyUser);
+userRouter.post('/login', authLimiter, loginUser);
+userRouter.post('/refresh', authLimiter, refreshUserToken);
+userRouter.post('/code', authLimiter, newCodeRequest);
 // AUTHORIZED ONLY
 userRouter.get('/me', authMiddleware, getMe);
 userRouter.patch('/changePassword', authMiddleware, limiter, changeUserPassword);
