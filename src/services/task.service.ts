@@ -5,6 +5,7 @@ import type { TaskDto, TaskUpdate, TaskSearchOptions } from '../schemas/task.sch
 
 // ERRORS
 import { TaskNotFoundError } from '../errors/app.errors.js';
+import { sendPushToUser } from './push.service.js';
 
 export const create = async (userId: number, data: TaskDto) => {
 
@@ -14,6 +15,12 @@ export const create = async (userId: number, data: TaskDto) => {
         highPriority: data.highPriority ?? false,
         userId
     });
+
+    void sendPushToUser(userId, {
+        title: "Taski",
+        body: "Ебать мой хуй! Вот незадача!",
+        url: `/tasks`,
+    }).catch((err) => console.error("[PUSH]", err));
 
     return { id: task.id, createdAt: task.createdAt };
 };

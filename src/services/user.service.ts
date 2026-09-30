@@ -150,12 +150,6 @@ export const login = async (data: UserLogin) => {
     await saveToken(user.id, await createTokenHash(refreshToken));
     const accessToken = signJWT(user.id);
 
-    void sendPushToUser(user.id, {
-        title: "SellBySell",
-        body: "Да ну нахуй! Ты кто?",
-        url: `/me`,
-    }).catch((err) => console.error("[PUSH]", err));
-
     return { accessToken, refreshToken };
 
 };
