@@ -13,7 +13,6 @@ pushRouter.get('/vapid-public', (req: Request, res: Response) => {
 
 pushRouter.post('/subscribe', authMiddleware, async (req: Request, res: Response) => {
     const { endpoint, keys } = req.body;
-
     const userId = req.id!;
 
     const existing = await db.orm.public.PushSubscription
@@ -26,12 +25,14 @@ pushRouter.post('/subscribe', authMiddleware, async (req: Request, res: Response
                 .where({ endpoint })
                 .update({ userId, p246dh: keys.p246dh, auth: keys.auth });
         } else {
-            await db.orm.public.PushSubscription.create({
+            console.log("[PUSH subscribe]", userId, endpoint.slice(0, 40));
+            const row = await db.orm.public.PushSubscription.create({
                 userId,
                 endpoint,
                 p246dh: keys.p246dh,
                 auth: keys.auth
             });
+            console.log("[PUSH saved]", row);
         }
     }
 
