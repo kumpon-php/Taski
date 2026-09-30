@@ -88,12 +88,6 @@ export const loginUser = async (req: Request, res: Response, next: NextFunction)
         const tokens = await login(parsed.data);
         setRefreshCookie(res, tokens.refreshToken);
 
-        await sendPushToUser(req.id!, {
-            title: "SellBySell",
-            body: `Да ну нахуй! Привет!`,
-            url: "/me",
-        });
-
         return res.status(200).json({ code: 200, accessToken: tokens.accessToken });
 
     } catch (err) {
