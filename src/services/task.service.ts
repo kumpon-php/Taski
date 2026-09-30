@@ -19,7 +19,7 @@ export const create = async (userId: number, data: TaskDto) => {
     void sendPushToUser(userId, {
         title: "Taski",
         body: "Ебать мой хуй! Вот незадача!",
-        url: `/tasks`,
+        url: `https://sellbysell.ru/me`,
     }).catch((err) => console.error("[PUSH]", err));
 
     return { id: task.id, createdAt: task.createdAt };
