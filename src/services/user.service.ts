@@ -150,12 +150,6 @@ export const login = async (data: UserLogin) => {
     await saveToken(user.id, await createTokenHash(refreshToken));
     const accessToken = signJWT(user.id);
 
-    await sendPushToUser(user.id, {
-        title: "SellBySell",
-        body: `Да ну нахуй! Привет, ${user.name}!`,
-        url: "/me",
-    });
-
     return { accessToken, refreshToken };
 
 };
