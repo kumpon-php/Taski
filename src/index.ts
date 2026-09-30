@@ -27,12 +27,14 @@ app.use(cors({
 // ROUTES
 import userRouter from './routes/user.routes.js';
 import taskRouter from './routes/task.routes.js';
+import pushRouter from './routes/push.routes.js';
 
 app.use(express.json());
 app.use(cookieParser());
 
 app.use('/user', userRouter);
 app.use('/task', taskRouter);
+app.use('/api/push', pushRouter);
 
 app.get('/alive', async (req: Request, res: Response) => {
     try {

@@ -8,6 +8,17 @@ model User {
   codes Code[]
   refreshToken RefreshToken[]
   tasks Task[]
+  pushSubs PushSubscription[]
+}
+
+model PushSubscription {
+  id Int @id @default(autoincrement())
+  userId Int
+  endpoint String @unique
+  p246dh String
+  auth String
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Code {
