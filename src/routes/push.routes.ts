@@ -19,6 +19,8 @@ pushRouter.post('/subscribe', authMiddleware, async (req: Request, res: Response
         .where({ endpoint })
         .first();
 
+    console.log(existing);
+
     if (existing) {
         if (existing.userId !== userId) {
             await db.orm.public.PushSubscription
