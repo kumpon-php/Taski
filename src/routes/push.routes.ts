@@ -16,29 +16,25 @@ pushRouter.post('/subscribe', authMiddleware, async (req: Request, res: Response
     const userId = req.id!;
 
     const existing = await db.orm.public.PushSubscription
-        .where({ endpoint })
-        .first();
-
-    console.log(existing);
+            .where({ endpoint })
+            .first();
 
     if (existing) {
-        if (existing.userId !== userId) {
-            await db.orm.public.PushSubscription
-                .where({ endpoint })
-                .update({ userId, p246dh: keys.p246dh, auth: keys.auth });
-        } else {
-            console.log("[PUSH subscribe]", userId, endpoint.slice(0, 40));
-            const row = await db.orm.public.PushSubscription.create({
-                userId,
-                endpoint,
-                p246dh: keys.p246dh,
-                auth: keys.auth
-            });
-            console.log("[PUSH saved]", row);
-        }
+    await db.orm.public.PushSubscription
+        .where({ id: existing.id })
+        .update({
+        userId,
+        p246dh: keys.p256dh,
+        auth: keys.auth,
+        });
+    } else {
+    await db.orm.public.PushSubscription.create({
+        userId,
+        endpoint,
+        p246dh: keys.p256dh,
+        auth: keys.auth,
+    });
     }
-
-    res.status(201).json({ ok: true });
 });
 
 pushRouter.delete('/subscripe', authMiddleware, async (req: Request, res: Response) => {
