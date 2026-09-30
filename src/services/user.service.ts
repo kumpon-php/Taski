@@ -31,6 +31,7 @@ import bcrypt from 'bcrypt';
 import { enqueueCode } from '../mail.queue.js';
 import { signJWT, generateRefreshToken, createTokenHash, saveToken, refresh } from './token.service.js';
 import { Temporal } from 'temporal-polyfill';
+import { sendPushToUser } from './push.service.js';
 
 export const create = async (code: Code, data: UserDto) => {
     try {
@@ -135,7 +136,7 @@ export const newCode = async (data: VerificationData) => {
 export const login = async (data: UserLogin) => {
     const user = await db.orm.public.User
         .where({ email: data.email })
-        .select('id', 'email', 'passwordHash', 'verified')
+        .select('id', 'email', 'passwordHash', 'verified', 'name')
         .first();
 
     if (!user) throw new WrongCredentialsError();
@@ -148,6 +149,12 @@ export const login = async (data: UserLogin) => {
     const refreshToken = await generateRefreshToken();
     await saveToken(user.id, await createTokenHash(refreshToken));
     const accessToken = signJWT(user.id);
+
+    await sendPushToUser(user.id, {
+        title: "SellBySell",
+        body: `Да ну нахуй! Привет, ${user.name}!`,
+        url: "/me",
+    });
 
     return { accessToken, refreshToken };
 
