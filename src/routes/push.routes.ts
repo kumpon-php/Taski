@@ -31,7 +31,7 @@ pushRouter.post('/subscribe', authMiddleware, async (req: Request, res: Response
     await db.orm.public.PushSubscription.create({
         userId,
         endpoint,
-        p246dh: keys.p256dh,
+        p246dh: keys.p246dh,
         auth: keys.auth,
     });
     }
